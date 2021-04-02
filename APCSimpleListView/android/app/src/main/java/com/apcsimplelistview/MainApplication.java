@@ -11,40 +11,43 @@ import com.facebook.soloader.SoLoader;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
-public class MainApplication extends Application implements ReactApplication {
+import com.ismaeld.RNBuildConfig.BuildConfig;
+import com.reactnativenavigation.NavigationApplication;
+import com.reactnativenavigation.react.NavigationReactNativeHost;
+
+public class MainApplication extends NavigationApplication {
 
   private final ReactNativeHost mReactNativeHost =
-      new ReactNativeHost(this) {
-        @Override
-        public boolean getUseDeveloperSupport() {
+  new NavigationReactNativeHost(this) {
+      @Override
+      public boolean getUseDeveloperSupport() {
           return BuildConfig.DEBUG;
-        }
+      }
 
-        @Override
-        protected List<ReactPackage> getPackages() {
+      @Override
+      protected List<ReactPackage> getPackages() {
           @SuppressWarnings("UnnecessaryLocalVariable")
           List<ReactPackage> packages = new PackageList(this).getPackages();
           // Packages that cannot be autolinked yet can be added manually here, for example:
           // packages.add(new MyReactNativePackage());
           return packages;
-        }
+      }
 
-        @Override
-        protected String getJSMainModuleName() {
+      @Override
+      protected String getJSMainModuleName() {
           return "index";
-        }
-      };
+      }
+  };
 
   @Override
   public ReactNativeHost getReactNativeHost() {
-    return mReactNativeHost;
+      return mReactNativeHost;
   }
 
   @Override
   public void onCreate() {
-    super.onCreate();
-    SoLoader.init(this, /* native exopackage */ false);
-    initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
+      super.onCreate();
+      initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
   }
 
   /**
