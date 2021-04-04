@@ -80,84 +80,9 @@ const IconFiles = {
     fill: require('@assets/icons/eva/github.png'),
     outline: require('@assets/icons/eva/github-outline.png')
   },
-  [EvaIconName.HOME]: {
-    fill: require('@assets/icons/eva/home.png'),
-    outline: require('@assets/icons/eva/home-outline.png')
-  },
-  [EvaIconName.PERSON]: {
-    fill: require('@assets/icons/eva/person.png'),
-    outline: require('@assets/icons/eva/person-outline.png')
-  },
-  [EvaIconName.PHONE]: {
-    fill: require('@assets/icons/eva/phone.png'),
-    outline: require('@assets/icons/eva/phone-outline.png')
-  },
+
   [EvaIconName.INFO]: {
     fill: require('@assets/icons/eva/info.png'),
     outline: require('@assets/icons/eva/info-outline.png')
   },
-  [EvaIconName.MESSAGE_SQUARE]: {
-    fill: require('@assets/icons/eva/message-square.png'),
-    outline: require('@assets/icons/eva/message-square-outline.png')
-  },
-  [EvaIconName.EMAIL]: {
-    fill: require('@assets/icons/eva/email.png'),
-    outline: require('@assets/icons/eva/email-outline.png')
-  },
-  [EvaIconName.REFRESH]: {
-    fill: require('@assets/icons/eva/refresh.png'),
-    outline: require('@assets/icons/eva/refresh-outline.png')
-  },
-  [EvaIconName.CALENDAR]: {
-    fill: require('@assets/icons/eva/calendar.png'),
-    outline: require('@assets/icons/eva/calendar-outline.png')
-  },
-  [EvaIconName.REPEAT]: {
-    fill: require('@assets/icons/eva/repeat.png'),
-    outline: require('@assets/icons/eva/repeat-outline.png')
-  },
-  [EvaIconName.CLOSE_CIRCLE]: {
-    fill: require('@assets/icons/eva/close-circle.png'),
-    outline: require('@assets/icons/eva/close-circle-outline.png')
-  },
-  [EvaIconName.ALERT_CIRCLE]: {
-    fill: require('@assets/icons/eva/alert-circle.png'),
-    outline: require('@assets/icons/eva/alert-circle-outline.png')
-  },
-  [EvaIconName.PEOPLE]: {
-    fill: require('@assets/icons/eva/people.png'),
-    outline: require('@assets/icons/eva/people-outline.png')
-  },
-  [EvaIconName.HELP]: {
-    fill: require('@assets/icons/eva/question-mark-circle.png'),
-    outline: require('@assets/icons/eva/question-mark-circle-outline.png')
-  },
-  [EvaIconName.BRIEFCASE]: {
-    fill: require('@assets/icons/eva/briefcase.png'),
-    outline: require('@assets/icons/eva/briefcase-outline.png')
-  },
-  [EvaIconName.PIN]: {
-    fill: require('@assets/icons/eva/pin.png'),
-    outline: require('@assets/icons/eva/pin-outline.png')
-  },
-  [EvaIconName.EDIT]: {
-    fill: require('@assets/icons/eva/edit.png'),
-    outline: require('@assets/icons/eva/edit-outline.png')
-  },
-  [EvaIconName.HASH]: {
-    fill: require('@assets/icons/eva/hash.png'),
-    outline: require('@assets/icons/eva/hash-outline.png')
-  },
-  [EvaIconName.MAP]: {
-    fill: require('@assets/icons/eva/map.png'),
-    outline: require('@assets/icons/eva/map-outline.png')
-  },
-  [EvaIconName.CHECKMARK]: {
-    fill: require('@assets/icons/eva/checkmark.png'),
-    outline: require('@assets/icons/eva/checkmark-outline.png')
-  },
-  [EvaIconName.DOUBLE_CHECKMARK]: {
-    fill: require('@assets/icons/eva/done-all.png'),
-    outline: require('@assets/icons/eva/done-all-outline.png')
-  }
 };
