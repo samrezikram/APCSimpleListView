@@ -1,4 +1,5 @@
 apply plugin: "com.android.application"
+apply plugin: 'kotlin-android'
 
 import com.android.build.OutputFile
 
@@ -123,47 +124,72 @@ def enableHermes = project.ext.react.get("enableHermes", false);
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
+    /* ************************* Compile options ****************************** */
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    /* ************************************************************************ */
 
+    /* ********************** Default Configurations ************************** */
     defaultConfig {
         applicationId "com.apcsimplelistview"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
+        missingDimensionStrategy "RNN.reactNativeVersion", "reactNative62"
         versionCode 1
         versionName "1.0"
-    }
-    splits {
-        abi {
-            reset()
-            enable enableSeparateBuildPerCPUArchitecture
-            universalApk false  // If true, also generate a universal APK
-            include "armeabi-v7a", "x86", "arm64-v8a", "x86_64"
+        ndk {
+            abiFilters "armeabi-v7a", "x86", "arm64-v8a", "x86_64"
         }
+
+        // HTTP Connections
+        buildConfigField "int", "HTTP_CONNECTIONS_TIMEOUT", "30000"
+
     }
+    /* ************************************************************************ */
+
+    /* ********************** Signing Configurations ************************** */
     signingConfigs {
         debug {
-            storeFile file('debug.keystore')
-            storePassword 'android'
-            keyAlias 'androiddebugkey'
-            keyPassword 'android'
+            if (project.hasProperty('APC_STORE_FILE')) {
+                storeFile file(APC_STORE_FILE)
+                storePassword APC_STORE_PASSWORD
+                keyAlias APC_KEY_ALIAS
+                keyPassword APC_KEY_PASSWORD
+            }
+        }
+        release {
+            if (project.hasProperty('APC_STORE_FILE')) {
+                storeFile file(APC_STORE_FILE)
+                storePassword APC_STORE_PASSWORD
+                keyAlias APC_KEY_ALIAS
+                keyPassword APC_KEY_PASSWORD
+            }
         }
     }
+
+    /* ************************************************************************ */
+
+    /* *************************** Build Types ******************************** */
     buildTypes {
         debug {
-            signingConfig signingConfigs.debug
+            minifyEnabled false
+            signingConfig null
         }
         release {
             // Caution! In production, you need to generate your own keystore file.
             // see https://reactnative.dev/docs/signed-apk-android.
-            signingConfig signingConfigs.debug
+            minifyEnabled false
+            signingConfig signingConfigs.release
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
 
+    /* ************************************************************************ */
+
+    /* ************************* Product Flavors ****************************** */
     // applicationVariants are e.g. debug, release
     applicationVariants.all { variant ->
         variant.outputs.each { output ->
@@ -178,6 +204,18 @@ android {
 
         }
     }
+    /* ************************************************************************ */
+
+    /* ************************** Build Splits ******************************** */
+    splits {
+        abi {
+            reset()
+            enable enableSeparateBuildPerCPUArchitecture
+            universalApk false  // If true, also generate a universal APK
+            include "armeabi-v7a", "x86", "arm64-v8a", "x86_64"
+        }
+    }
+    /* ************************************************************************ */
 }
 
 dependencies {

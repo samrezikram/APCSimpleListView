@@ -1,0 +1,816 @@
+[
+    {
+        "id": "1",
+        "title": "Economy Meal Plan 1 time",
+        "BitesType": "Economy",
+        "mealPlanDetails": "Lunch or Dinner",
+        "priceData": {
+            "baseOfferPrice": 250,
+            "deliveryCharge": 25,
+            "TPWithVAT": 275
+        }
+    },
+    {
+        "id": "2",
+        "title": "Economy Meal Plan 2 time",
+        "BitesType": "Economy",
+        "mealPlanDetails": "Lunch & Dinner",
+        "priceData": {
+            "baseOfferPrice": 425,
+            "deliveryCharge": 50,
+            "TPWithVAT": 275
+        }
+    },
+    {
+        "id": "3",
+        "title": "Standard Meal Plan 2 times",
+        "BitesType": "Economy",
+        "mealPlanDetails": "Lunch & Dinner",
+        "priceData": {
+            "baseOfferPrice": 550,
+            "deliveryCharge": 75,
+            "TPWithVAT": 657
+        }
+    },
+    {
+        "id": "4",
+        "title": "Standard Meal Plan 1 times",
+        "BitesType": "Economy",
+        "mealPlanDetails": "Lunch or Dinner",
+        "priceData": {
+            "baseOfferPrice": 350,
+            "deliveryCharge": 50,
+            "TPWithVAT": 420
+        }
+    },
+    {
+        "id": "5",
+        "title": "UP Size Meal Plan 2 times",
+        "BitesType": "Economy",
+        "mealPlanDetails": "Lunch & Dinner",
+        "priceData": {
+            "baseOfferPrice": 666,
+            "deliveryCharge": 75,
+            "TPWithVAT": 779
+        }
+    },
+    {
+        "id": "6",
+        "title": "UP Size Meal Plan 1 time",
+        "BitesType": "Economy",
+        "mealPlanDetails": "Lunch or Dinner",
+        "priceData": {
+            "baseOfferPrice": 399,
+            "deliveryCharge": 50,
+            "TPWithVAT": 472
+        }
+    },
+    {
+        "id": "7",
+        "title": "Family Size Meal Plan 2 Times(approx.2 people with std. Appetit)",
+        "BitesType": "Economy",
+        "mealPlanDetails": "Lunch & Dinner",
+        "priceData": {
+            "baseOfferPrice": 799,
+            "deliveryCharge": 75,
+            "TPWithVAT": 918
+        }
+    },
+    {
+        "id": "8",
+        "title": "Family Size Meal Plan 1 time",
+        "BitesType": "Economy",
+        "mealPlanDetails": "Lunch or Dinner",
+        "priceData": {
+            "baseOfferPrice": 425,
+            "deliveryCharge": 50,
+            "TPWithVAT": 499
+        }
+    },
+    {
+        "id": "9",
+        "title": "Super Size Meal Plan 1 time(approx.4 people with std. Appetit)",
+        "BitesType": "Economy",
+        "mealPlanDetails": "Lunch or Dinner",
+        "priceData": {
+            "baseOfferPrice": 499,
+            "deliveryCharge": 50,
+            "TPWithVAT": 577
+        }
+    },
+    {
+        "id": "10",
+        "title": "Super Size Meal Plan 2 times",
+        "BitesType": "Economy",
+        "mealPlanDetails": "Lunch & Dinner",
+        "priceData": {
+            "baseOfferPrice": 960,
+            "deliveryCharge": 75,
+            "TPWithVAT": 1087
+        }
+    },
+    {
+        "id": "11",
+        "title": "Super XL Size Meal Plan 1 time(approx.6 people with std. Appetit)",
+        "BitesType": "Economy",
+        "mealPlanDetails": "Lunch or Dinner",
+        "priceData": {
+            "baseOfferPrice": 599,
+            "deliveryCharge": 50,
+            "TPWithVAT": 685
+        }
+    },
+    {
+        "id": "12",
+        "title": "Super XL Size Meal Plan 2 time",
+        "BitesType": "Economy",
+        "mealPlanDetails": "Lunch & Dinner",
+        "priceData": {
+            "baseOfferPrice": 1225,
+            "deliveryCharge": 75,
+            "TPWithVAT": 1365
+        }
+    },
+    {
+        "id": "13",
+        "title": "Super XXL Size Meal Plan 1 time(approx.8 people with std. Appetit)",
+        "BitesType": "Economy",
+        "mealPlanDetails": "Lunch or Dinner",
+        "priceData": {
+            "baseOfferPrice": 715,
+            "deliveryCharge": 50,
+            "TPWithVAT": 805
+        }
+    },
+    {
+        "id": "14",
+        "title": "Super XXL Size Meal Plan 2 tim",
+        "BitesType": "Economy",
+        "mealPlanDetails": "Lunch & Dinner",
+        "priceData": {
+            "baseOfferPrice": 1475,
+            "deliveryCharge": 75,
+            "TPWithVAT": 1630
+        }
+    },
+    {
+        "id": "15",
+        "title": "Premium Meal Plan 1 time",
+        "BitesType": "Economy",
+        "mealPlanDetails": "Lunch or Dinner",
+        "priceData": {
+            "baseOfferPrice": 620,
+            "deliveryCharge": 50,
+            "TPWithVAT": 699
+        }
+    },
+    {
+        "id": "16",
+        "title": "Premium Meal Plan 2 time",
+        "BitesType": "Economy",
+        "mealPlanDetails": "Lunch & Dinner",
+        "priceData": {
+            "baseOfferPrice": 1070,
+            "deliveryCharge": 75,
+            "TPWithVAT": 1199
+        }
+    },
+    {
+        "id": "17",
+        "title": "Fusion Meal Plan 1 time",
+        "BitesType": "Economy",
+        "mealPlanDetails": "Lunch or Dinner",
+        "priceData": {
+            "baseOfferPrice": 760,
+            "deliveryCharge": 50,
+            "TPWithVAT": 850
+        }
+    },
+    {
+        "id": "18",
+        "title": "Fusion Meal Plan 2 time",
+        "BitesType": "Economy",
+        "mealPlanDetails": "Lunch & Dinner",
+        "priceData": {
+            "baseOfferPrice": 1350,
+            "deliveryCharge": 75,
+            "TPWithVAT": 1449
+        }
+    },
+    {
+        "id": "19",
+        "title": "Grill Meal Plan 1 time",
+        "BitesType": "Economy",
+        "mealPlanDetails": "Lunch or Dinner",
+        "priceData": {
+            "baseOfferPrice": 1090,
+            "deliveryCharge": 50,
+            "TPWithVAT": 1200
+        }
+    },
+    {
+        "id": "20",
+        "title": "Grill Meal Plan 2 times",
+        "BitesType": "Economy",
+        "mealPlanDetails": "Lunch & Dinner",
+        "priceData": {
+            "baseOfferPrice": 1725,
+            "deliveryCharge": 75,
+            "TPWithVAT": 1899
+        }
+    },
+    {
+        "id": "21",
+        "title": "Economy Meal Plus Plan 1 time",
+        "BitesType": "plus plan (Salad + Raita)",
+        "mealPlanDetails": "Lunch or Dinner",
+        "priceData": {
+            "baseOfferPrice": 325,
+            "deliveryCharge": 25,
+            "TPWithVAT": 370
+        }
+    },
+    {
+        "id": "22",
+        "title": "Economy Meal Plus Plan 2 time",
+        "BitesType": "plus plan (Salad + Raita)",
+        "mealPlanDetails": "Lunch & Dinner",
+        "priceData": {
+            "baseOfferPrice": 575,
+            "deliveryCharge": 75,
+            "TPWithVAT": 685
+        }
+    },
+    {
+        "id": "23",
+        "title": "Standard Meal Plan Plus 1 time",
+        "BitesType": "plus plan (Salad + Raita)",
+        "mealPlanDetails": "Lunch or Dinner",
+        "priceData": {
+            "baseOfferPrice": 590,
+            "deliveryCharge": 50,
+            "TPWithVAT": 675
+        }
+    },
+    {
+        "id": "24",
+        "title": "Standard Meal Plan Plus 2 times",
+        "BitesType": "plus plan (Salad + Raita)",
+        "mealPlanDetails": "Lunch & Dinner",
+        "priceData": {
+            "baseOfferPrice": 1030,
+            "deliveryCharge": 75,
+            "TPWithVAT": 1165
+        }
+    },
+    {
+        "id": "25",
+        "title": "Up Size Meal Plan Plus 1 time",
+        "BitesType": "plus plan (Salad + Raita)",
+        "mealPlanDetails": "Lunch or Dinner",
+        "priceData": {
+            "baseOfferPrice": 639,
+            "deliveryCharge": 50,
+            "TPWithVAT": 725
+        }
+    },
+    {
+        "id": "26",
+        "title": "Up Size Meal Plan Plus 2 times",
+        "BitesType": "plus plan (Salad + Raita)",
+        "mealPlanDetails": "Lunch & Dinner",
+        "priceData": {
+            "baseOfferPrice": 1146,
+            "deliveryCharge": 75,
+            "TPWithVAT": 1285
+        }
+    },
+    {
+        "id": "27",
+        "title": "Family Size Meal Plan Plus 1 time",
+        "BitesType": "Economy",
+        "mealPlanDetails": "Lunch or Dinner",
+        "priceData": {
+            "baseOfferPrice": 665,
+            "deliveryCharge": 50,
+            "TPWithVAT": 755
+        }
+    },
+    {
+        "id": "28",
+        "title": "Family Size Meal Plan Plus 2 times",
+        "BitesType": "plus plan (Salad + Raita)",
+        "mealPlanDetails": "Lunch & Dinner",
+        "priceData": {
+            "baseOfferPrice": 1279,
+            "deliveryCharge": 75,
+            "TPWithVAT": 1425
+        }
+    },
+    {
+        "id": "29",
+        "title": "Super Size Meal Plan 2 times",
+        "BitesType": "plus plan (Salad + Raita)",
+        "mealPlanDetails": "Lunch & Dinner",
+        "priceData": {
+            "baseOfferPrice": 1560,
+            "deliveryCharge": 75,
+            "TPWithVAT": 1720
+        }
+    },
+    {
+        "id": "30",
+        "title": "Super Size Meal Plan 1 time",
+        "BitesType": "plus plan (Salad + Raita)",
+        "mealPlanDetails": "Lunch or Dinner",
+        "priceData": {
+            "baseOfferPrice": 919,
+            "deliveryCharge": 50,
+            "TPWithVAT": 1020
+        }
+    },
+    {
+        "id": "31",
+        "title": "Standard Meal Plan 1 time(Brown Rice|Cauliflower Rice|Millet)",
+        "BitesType": "Indian Healthy Plan",
+        "mealPlanDetails": "Lunch & Dinner",
+        "priceData": {
+            "baseOfferPrice": 425,
+            "deliveryCharge": 50,
+            "TPWithVAT": 499
+        }
+    },
+    {
+        "id": "32",
+        "title": "Standard Meal Plan 2 times(Brown Rice|Cauliflower Rice|Millet)",
+        "BitesType": "Indian Healthy Plan",
+        "mealPlanDetails": "Lunch or Dinner",
+        "priceData": {
+            "baseOfferPrice": 735,
+            "deliveryCharge": 75,
+            "TPWithVAT": 815
+        }
+    },
+    {
+        "id": "33",
+        "title": "Standard Meal Plan 1 time(Brown Rice|Cauliflower Rice|Millet)",
+        "BitesType": "Allergic Special Indian Meal Plan",
+        "mealPlanDetails": "Lunch & Dinner",
+        "priceData": {
+            "baseOfferPrice": "" ,
+            "deliveryCharge": "",
+            "TPWithVAT": "CALL"
+        }
+    },
+    {
+        "id": "34",
+        "title": "Standard Meal Plan 2 times(Brown Rice|Cauliflower Rice|Millet)",
+        "BitesType": "Allergic Special Indian Meal Plan",
+        "mealPlanDetails": "Lunch or Dinner",
+        "priceData": {
+            "baseOfferPrice": "",
+            "deliveryCharge": "",
+            "TPWithVAT": "CALL"
+        }
+    },
+    {
+        "id": "35",
+        "title": "Standard Meal Plan 1 time",
+        "BitesType": "More Plus Plan",
+        "mealPlanDetails": "Lunch & Dinner",
+        "priceData": {
+            "baseOfferPrice": 420,
+            "deliveryCharge": 50,
+            "TPWithVAT": 495
+        }
+    },
+    {
+        "id": "36",
+        "title": "Standard Meal Plan 2 times",
+        "BitesType": "Allergic Special Indian Meal Plan",
+        "mealPlanDetails": "Lunch or Dinner",
+        "priceData": {
+            "baseOfferPrice": 782,
+            "deliveryCharge": 75,
+            "TPWithVAT": 899
+        }
+    },
+    {
+        "id": "37",
+        "title": "Economy Green Box Plan 1 time",
+        "BitesType": "Green Box Meal Plan",
+        "mealPlanDetails": "Lunch or Dinner",
+        "priceData": {
+            "baseOfferPrice": 600,
+            "deliveryCharge": 50,
+            "TPWithVAT": 685
+        }
+    },
+    {
+        "id": "38",
+        "title": "Economy Green Box Plan 2 times",
+        "BitesType": "Green Box Meal Plan",
+        "mealPlanDetails": "Lunch & Dinner",
+        "priceData": {
+            "baseOfferPrice": 1150,
+            "deliveryCharge": 75,
+            "TPWithVAT": 1290
+        }
+    },
+    {
+        "id": "39",
+        "title": "Standard Green Box 1 time",
+        "BitesType": "Green Box Meal Plan",
+        "mealPlanDetails": "Lunch or Dinner",
+        "priceData": {
+            "baseOfferPrice": 800,
+            "deliveryCharge": 50,
+            "TPWithVAT": 895
+        }
+    },
+    {
+        "id": "40",
+        "title": "Standard Green Box 2 times",
+        "BitesType": "Green Box Meal Plan",
+        "mealPlanDetails": "Lunch & Dinner",
+        "priceData": {
+            "baseOfferPrice": 1500,
+            "deliveryCharge": 75,
+            "TPWithVAT": 1660
+        }
+    },
+    {
+        "id": "41",
+        "title": "Family Size Green Box 1 time",
+        "BitesType": "Green Box Meal Plan",
+        "mealPlanDetails": "Lunch or Dinner",
+        "priceData": {
+            "baseOfferPrice": 960,
+            "deliveryCharge": 50,
+            "TPWithVAT": 1065
+        }
+    },
+    {
+        "id": "42",
+        "title": "Family Size Green Box 2 times",
+        "BitesType": "Green Box Meal Plan",
+        "mealPlanDetails": "Lunch & Dinner",
+        "priceData": {
+            "baseOfferPrice": 1800,
+            "deliveryCharge": 75,
+            "TPWithVAT": 1970
+        }
+    },
+    {
+        "id": "43",
+        "title": "Super Size Green Box 2 times",
+        "BitesType": "Green Box Meal Plan",
+        "mealPlanDetails": "Lunch & Dinner",
+        "priceData": {
+            "baseOfferPrice": 2300,
+            "deliveryCharge": 75,
+            "TPWithVAT": 2500
+        }
+    },
+    {
+        "id": "44",
+        "title": "Super Size Green Box 1 time",
+        "BitesType": "Green Box Meal Plan",
+        "mealPlanDetails": "Lunch or Dinner",
+        "priceData": {
+            "baseOfferPrice": 1150,
+            "deliveryCharge": 50,
+            "TPWithVAT": 1260
+        }
+    },
+    {
+        "id": "45",
+        "title": "Arabic one time Meal Plan",
+        "BitesType": "Arabic & Continental Meal Plan",
+        "mealPlanDetails": "Lunch or Dinner",
+        "priceData": {
+            "baseOfferPrice": 575,
+            "deliveryCharge": 50,
+            "TPWithVAT": 660
+        }
+    },
+    {
+        "id": "46",
+        "title": "Arabic Two times Meal Plan",
+        "BitesType": "Arabic & Continental Meal Plan",
+        "mealPlanDetails": "Lunch & Dinner",
+        "priceData": {
+            "baseOfferPrice": 1100,
+            "deliveryCharge": 75,
+            "TPWithVAT": 1240
+        }
+    },
+    {
+        "id": "47",
+        "title": "Continental One time non Veg Meal Plan",
+        "BitesType": "Arabic & Continental Meal Plan",
+        "mealPlanDetails": "Lunch or Dinner",
+        "priceData": {
+            "baseOfferPrice": 650,
+            "deliveryCharge": 50,
+            "TPWithVAT": 750
+        }
+    },
+    {
+        "id": "48",
+        "title": "Continental Two times non Veg Meal Plan",
+        "BitesType": "Arabic & Continental Meal Plan",
+        "mealPlanDetails": "Lunch & Dinner",
+        "priceData": {
+            "baseOfferPrice": 1250,
+            "deliveryCharge": 75,
+            "TPWithVAT": 1400
+        }
+    },
+    {
+        "id": "49",
+        "title": "Continental One times Veg Meal Plan",
+        "BitesType": "Arabic & Continental Meal Plan",
+        "mealPlanDetails": "Lunch or Dinner",
+        "priceData": {
+            "baseOfferPrice": 850,
+            "deliveryCharge": 50,
+            "TPWithVAT": 950
+        }
+    },
+    {
+        "id": "50",
+        "title": "Continental Two times Veg Meal Plan",
+        "BitesType": "Arabic & Continental Meal Plan",
+        "mealPlanDetails": "Lunch & Dinner",
+        "priceData": {
+            "baseOfferPrice": 1600,
+            "deliveryCharge": 75,
+            "TPWithVAT": 1760
+        }
+    },
+    {
+        "id": "51",
+        "title": "Weight Loss Meal Plan",
+        "BitesType": "Weight Loss Meal Plan",
+        "mealPlanDetails": "1 Day Plan",
+        "priceData": {
+            "baseOfferPrice": 150,
+            "deliveryCharge": 7.50,
+            "TPWithVAT": 158
+        }
+    },
+    {
+        "id": "52",
+        "title": "Weight Loss Meal Plan",
+        "BitesType": "Weight Loss Meal Plan",
+        "mealPlanDetails": "5 Day Plan",
+        "priceData": {
+            "baseOfferPrice": 550,
+            "deliveryCharge": 27.50,
+            "TPWithVAT": 578
+        }
+    },
+    {
+        "id": "53",
+        "title": "Weight Loss Meal Plan",
+        "BitesType": "Weight Loss Meal Plan",
+        "mealPlanDetails": "14 Day Plan",
+        "priceData": {
+            "baseOfferPrice": 2000,
+            "deliveryCharge": 100,
+            "TPWithVAT": 2100
+        }
+    },
+    {
+        "id": "54",
+        "title": "Weight Loss Meal Plan",
+        "BitesType": "Weight Loss Meal Plan",
+        "mealPlanDetails": "24 Day Plan",
+        "priceData": {
+            "baseOfferPrice": 3000,
+            "deliveryCharge": 150,
+            "TPWithVAT": 3150
+        }
+    },
+    {
+        "id": "55",
+        "title": "Weight Gain Meal Plan",
+        "BitesType": "Weight Gain Meal Plan",
+        "mealPlanDetails": "1 Day Plan",
+        "priceData": {
+            "baseOfferPrice": 180,
+            "deliveryCharge": 9,
+            "TPWithVAT": 189
+        }
+    },
+    {
+        "id": "56",
+        "title": "Weight Gain Meal Plan",
+        "BitesType": "Weight Gain Meal Plan",
+        "mealPlanDetails": "5 Day Plan",
+        "priceData": {
+            "baseOfferPrice": 600,
+            "deliveryCharge": 30,
+            "TPWithVAT": 630
+        }
+    },
+    {
+        "id": "57",
+        "title": "Weight Gain Meal Plan",
+        "BitesType": "Weight Gain Meal Plan",
+        "mealPlanDetails": "14 Day Plan",
+        "priceData": {
+            "baseOfferPrice": 2400,
+            "deliveryCharge": 120,
+            "TPWithVAT": 2520
+        }
+    },
+    {
+        "id": "58",
+        "title": "Weight Gain Meal Plan",
+        "BitesType": "Weight Gain Meal Plan",
+        "mealPlanDetails": "24 Day Plan",
+        "priceData": {
+            "baseOfferPrice": 3600,
+            "deliveryCharge": 180,
+            "TPWithVAT": 3780
+        }
+    },
+    {
+        "id": "59",
+        "title": "Post Pregnancy Meal Plan",
+        "BitesType": "Post Pregnancy Meal Plan",
+        "mealPlanDetails": "1 Day Plan",
+        "priceData": {
+            "baseOfferPrice": 180,
+            "deliveryCharge": 9,
+            "TPWithVAT": 189
+        }
+    },
+    {
+        "id": "60",
+        "title": "Post Pregnancy Meal Plan",
+        "BitesType": "Post Pregnancy Meal Plan",
+        "mealPlanDetails": "5 Day Plan",
+        "priceData": {
+            "baseOfferPrice": 600,
+            "deliveryCharge": 30,
+            "TPWithVAT": 630
+        }
+    },
+    {
+        "id": "61",
+        "title": "Post Pregnancy Meal Plan",
+        "BitesType": "Post Pregnancy Meal Plan",
+        "mealPlanDetails": "14 Day Plan",
+        "priceData": {
+            "baseOfferPrice": 2400,
+            "deliveryCharge": 120,
+            "TPWithVAT": 2520
+        }
+    },
+    {
+        "id": "62",
+        "title": "Post Pregnancy Meal Plan",
+        "BitesType": "Post Pregnancy Meal Plan",
+        "mealPlanDetails": "24 Day Plan",
+        "priceData": {
+            "baseOfferPrice": 3600,
+            "deliveryCharge": 180,
+            "TPWithVAT": 3780
+        }
+    },
+    {
+        "id": "63",
+        "title": "Kids Meal",
+        "BitesType": "Kids Meal",
+        "mealPlanDetails": "1 Day Plan",
+        "priceData": {
+            "baseOfferPrice": 150,
+            "deliveryCharge": 7.5,
+            "TPWithVAT": 158
+        }
+    },
+    {
+        "id": "64",
+        "title": "Kids Meal",
+        "BitesType": "Kids Meal",
+        "mealPlanDetails": "5 Day Plan",
+        "priceData": {
+            "baseOfferPrice": 550,
+            "deliveryCharge": 27.5,
+            "TPWithVAT": 578
+        }
+    },
+    {
+        "id": "65",
+        "title": "Kids Meal",
+        "BitesType": "Kids Meal",
+        "mealPlanDetails": "14 Day Plan",
+        "priceData": {
+            "baseOfferPrice": 2000,
+            "deliveryCharge": 100,
+            "TPWithVAT": 2100
+        }
+    },
+    {
+        "id": "66",
+        "title": "Kids Meal",
+        "BitesType": "Kids Meal",
+        "mealPlanDetails": "24 Day Plan",
+        "priceData": {
+            "baseOfferPrice": 3000,
+            "deliveryCharge": 150,
+            "TPWithVAT": 3150
+        }
+    },
+    {
+        "id": "67",
+        "title": "Pre Pregnancy Meal Plan",
+        "BitesType": "Pre Pregnancy Meal Plan",
+        "mealPlanDetails": "1 Day Plan",
+        "priceData": {
+            "baseOfferPrice": 180,
+            "deliveryCharge": 9,
+            "TPWithVAT": 189
+        }
+    },
+    {
+        "id": "68",
+        "title": "Pre Pregnancy Meal Plan",
+        "BitesType": "Pre Pregnancy Meal Plan",
+        "mealPlanDetails": "5 Day Plan",
+        "priceData": {
+            "baseOfferPrice": 600,
+            "deliveryCharge": 30,
+            "TPWithVAT": 630
+        }
+    },
+    {
+        "id": "69",
+        "title": "Pre Pregnancy Meal Plan",
+        "BitesType": "Pre Pregnancy Meal Plan",
+        "mealPlanDetails": "14 Day Plan",
+        "priceData": {
+            "baseOfferPrice": 2400,
+            "deliveryCharge": 120,
+            "TPWithVAT": 2520
+        }
+    },
+    {
+        "id": "70",
+        "title": "Pre Pregnancy Meal Plan",
+        "BitesType": "Pre Pregnancy Meal Plan",
+        "mealPlanDetails": "24 Day Plan",
+        "priceData": {
+            "baseOfferPrice": 3600,
+            "deliveryCharge": 180,
+            "TPWithVAT": 3780
+        }
+    },
+    {
+        "id": "71",
+        "title": "Keto Meal Plans Starts",
+        "BitesType": "Keto Meal Plans Starts",
+        "mealPlanDetails": "1 Day Plan",
+        "priceData": {
+            "baseOfferPrice": 180,
+            "deliveryCharge": 9,
+            "TPWithVAT": 189
+        }
+    },
+    {
+        "id": "72",
+        "title": "Keto Meal Plans Starts",
+        "BitesType": "Keto Meal Plans Starts",
+        "mealPlanDetails": "5 Day Plan",
+        "priceData": {
+            "baseOfferPrice": 600,
+            "deliveryCharge": 30,
+            "TPWithVAT": 630
+        }
+    },
+    {
+        "id": "73",
+        "title": "Keto Meal Plans Starts",
+        "BitesType": "Keto Meal Plans Starts",
+        "mealPlanDetails": "14 Day Plan",
+        "priceData": {
+            "baseOfferPrice": 2400,
+            "deliveryCharge": 120,
+            "TPWithVAT": 2520
+        }
+    },
+    {
+        "id": "74",
+        "title": "Keto Meal Plans Starts",
+        "BitesType": "Keto Meal Plans Starts",
+        "mealPlanDetails": "1 Day Plan",
+        "priceData": {
+            "baseOfferPrice": 3600,
+            "deliveryCharge": 180,
+            "TPWithVAT": 3780
+        }
+    }
+]

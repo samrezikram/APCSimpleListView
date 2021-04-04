@@ -1,0 +1,128 @@
+trigger:
+- master
+
+variables:
+  ${{ if in(variables['Build.Reason'], 'PullRequest') }}: 
+    buildType: 'Validation Build of'
+
+jobs:
+
+# Job 1: Install Dependencies
+- job: 'Install_Dependencies'
+  displayName: Install Dependencies
+  pool:
+    vmImage: 'macOS-10.15'
+  steps:
+
+  # Set Pipeline Build Number
+  - task: Bash@3
+    displayName: Set Pipline Build Number
+    inputs:
+      targetType: 'inline'
+      failOnStderr: false
+      script: | 
+        appVersion=$(cat BalancedBites/package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')
+        buildType="$(buildType)"
+        if [ "$buildType" != "Publish Build of" ]
+        then
+          echo "##vso[build.updatebuildnumber]$(buildType) $appVersion -"
+        else
+          echo "##vso[build.updatebuildnumber]$appVersion"
+        fi
+
+  # Cache / Restore Node Modules
+  - task: Cache@2
+    displayName: Cache / Restore Node Modules
+    inputs:
+      key: $(nodeCacheKey)
+      path: 'BalancedBites/node_modules'
+      cacheHitVar: NODE_CACHE_RESTORED
+
+  # Cache / Restore Pods
+  - task: Cache@2
+    displayName: Cache / Restore Cocoa Pods
+    inputs:
+      key: $(podsCacheKey)
+      path: 'BalancedBites/ios/Pods'
+      cacheHitVar: COCOA_PODS_CACHE_RESTORED
+
+  # Install Node_Modules
+  - task: Bash@3
+    displayName: 'Install Node Dependencies'
+    condition: ne(variables.NODE_CACHE_RESTORED, 'true')
+    inputs:
+      targetType: 'inline'
+      script: 'cd BalancedBites && yarn install --frozen-lockfile'
+      failOnStderr: false
+
+  # Ensure Cocoa Pods version
+  - task: Bash@3
+    displayName: 'Ensure Cocoa Pods Version'
+    condition: ne(variables.COCOA_PODS_CACHE_RESTORED, 'true')
+    inputs:
+      targetType: 'inline'
+      script: 'cd BalancedBites/ios && sh ci_ensure_cocoa_pods_version.sh'
+      failOnStderr: false
+
+  # Install Cocoa Pods
+  - task: Bash@3
+    displayName: 'Install Pods Dependencies'
+    condition: ne(variables.COCOA_PODS_CACHE_RESTORED, 'true')
+    inputs:
+      targetType: 'inline'
+      script: 'cd BalancedBites/ios && pod install'
+      failOnStderr: false
+
+# Job 2: Building For Android Dev
+- job: 'Android_DEV'
+  timeoutInMinutes: 120
+  displayName: Build Android DEV
+  dependsOn: Install_Dependencies
+  condition: succeeded('Install_Dependencies')
+  pool:
+    vmImage: 'macOS-10.15'
+  steps:
+
+  # Restore Node Modules
+  - task: Cache@2
+    displayName: Restore Node Modules
+    inputs:
+      key: $(nodeCacheKey)
+      path: 'APCSimpleListView/node_modules'
+
+  # Building Android APK For Dev
+  - task: Gradle@2
+    displayName: 'Build DEV'
+    inputs:
+      workingDirectory: 'APCSimpleListView/android'
+      gradleWrapperFile: 'APCSimpleListView/android/gradlew'
+      tasks: 'assembleRelease'
+
+  # Signing Android APKs with MTF Keys
+  - task: AndroidSigning@3
+    displayName: 'Sign APKs with MTF'
+    inputs:
+      apkFiles: '**/android/app/build/**/*.apk' 
+      apksign: true
+      apksignerKeystoreFile: 'apc-signing.jks'
+      apksignerKeystorePassword: '1u2H_Dr+1%Rd'
+      apksignerKeystoreAlias: 'apc'
+      apksignerKeyPassword: '1u2H_Dr+1%Rd'
+
+  # Copying Android APKs to Artifacts Directory
+  - task: CopyFiles@2
+    displayName: 'Copy Artifacts'
+    inputs:
+      contents: |
+        **/android/app/build/**/*.apk
+        **/APCSimpleListView/sourcemaps/android/*.map
+        ReleaseNotes.txt
+      targetFolder: '$(build.artifactStagingDirectory)'
+      flattenFolders: true
+
+  # Publishing Android APKs To Artifacts Folder
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifacts'
+    inputs:
+      pathToPublish: '$(Build.artifactStagingDirectory)'
+      artifactName: Android
