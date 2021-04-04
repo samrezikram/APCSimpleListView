@@ -99,15 +99,17 @@ jobs:
       tasks: 'assembleRelease'
 
   # Signing Android APKs with MTF Keys
-  # - task: AndroidSigning@3
-  #   displayName: 'Sign APKs with MTF'
-  #   inputs:
-  #     apkFiles: '**/android/app/build/**/*.apk' 
-  #     apksign: true
-  #     apksignerKeystoreFile: 'apc-signing.jks'
-  #     apksignerKeystorePassword: '1u2H_Dr+1%Rd'
-  #     apksignerKeystoreAlias: 'apc'
-  #     apksignerKeyPassword: '1u2H_Dr+1%Rd'
+  - task: AndroidSigning@3
+    displayName: 'Sign APKs with MTF'
+    inputs:
+      apkFiles: '**/android/app/build/**/*.apk' 
+      apksign: true
+      apksignerKeystoreFile: 'apc-signing.jks'
+      apksignerKeystorePassword: '1u2H_Dr+1%Rd'
+      apksignerKeystoreAlias: 'apc'
+      apksignerKeyPassword: '1u2H_Dr+1%Rd'
+      zipalign: false
+
 
   # Copying Android APKs to Artifacts Directory
   - task: CopyFiles@2
