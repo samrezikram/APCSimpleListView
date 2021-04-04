@@ -53,26 +53,7 @@ export const EvaIconGenerator = (name: EvaIconName, fill: boolean = true, style:
 
 export enum EvaIconName {
   GITHUB = 'github',
-  HOME = 'home',
-  PERSON = 'person',
-  PHONE = 'phone',
   INFO = 'info',
-  MESSAGE_SQUARE = 'message_square',
-  EMAIL = 'email',
-  REFRESH = 'refresh',
-  CALENDAR = 'calendar',
-  REPEAT = 'repeat',
-  CLOSE_CIRCLE = 'close-circle',
-  ALERT_CIRCLE = 'alert-circle',
-  PEOPLE = 'people',
-  HELP = 'help',
-  BRIEFCASE = 'briefcase',
-  PIN = 'pin',
-  EDIT = 'edit',
-  HASH = 'hash',
-  MAP = 'map',
-  CHECKMARK = 'checkmark',
-  DOUBLE_CHECKMARK = 'double-checkmark'
 }
 
 const IconFiles = {
