@@ -21,7 +21,7 @@ jobs:
       targetType: 'inline'
       failOnStderr: false
       script: | 
-        appVersion=$(cat BalancedBites/package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')
+        appVersion=$(cat APCSimpleListView/package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')
         buildType="$(buildType)"
         if [ "$buildType" != "Publish Build of" ]
         then
@@ -35,7 +35,7 @@ jobs:
     displayName: Cache / Restore Node Modules
     inputs:
       key: $(nodeCacheKey)
-      path: 'BalancedBites/node_modules'
+      path: 'APCSimpleListView/node_modules'
       cacheHitVar: NODE_CACHE_RESTORED
 
   # Cache / Restore Pods
@@ -43,7 +43,7 @@ jobs:
     displayName: Cache / Restore Cocoa Pods
     inputs:
       key: $(podsCacheKey)
-      path: 'BalancedBites/ios/Pods'
+      path: 'APCSimpleListView/ios/Pods'
       cacheHitVar: COCOA_PODS_CACHE_RESTORED
 
   # Install Node_Modules
@@ -52,7 +52,7 @@ jobs:
     condition: ne(variables.NODE_CACHE_RESTORED, 'true')
     inputs:
       targetType: 'inline'
-      script: 'cd BalancedBites && yarn install --frozen-lockfile'
+      script: 'cd APCSimpleListView && yarn install --frozen-lockfile'
       failOnStderr: false
 
   # Ensure Cocoa Pods version
@@ -61,7 +61,7 @@ jobs:
     condition: ne(variables.COCOA_PODS_CACHE_RESTORED, 'true')
     inputs:
       targetType: 'inline'
-      script: 'cd BalancedBites/ios && sh ci_ensure_cocoa_pods_version.sh'
+      script: 'cd APCSimpleListView/ios && sh ci_ensure_cocoa_pods_version.sh'
       failOnStderr: false
 
   # Install Cocoa Pods
@@ -70,7 +70,7 @@ jobs:
     condition: ne(variables.COCOA_PODS_CACHE_RESTORED, 'true')
     inputs:
       targetType: 'inline'
-      script: 'cd BalancedBites/ios && pod install'
+      script: 'cd APCSimpleListView/ios && pod install'
       failOnStderr: false
 
 # Job 2: Building For Android Dev
