@@ -134,7 +134,7 @@ class RequestGitHubRepoScreenComponent extends React.Component<IRequestGitHubRep
   private renderBrowseGithubRepoIssues(): React.ReactElement {
     return (
       <View style={styles.browseGithubRepoIssues}>
-        <Text category="c2" style={styles.screenDescriptionTitle}>
+        <Text category="c1" style={styles.screenDescriptionTitle}>
           {'Lets Explore GitHub Repository issues'}
         </Text>
       </View>
@@ -217,7 +217,7 @@ class RequestGitHubRepoScreenComponent extends React.Component<IRequestGitHubRep
 
   public render(): React.ReactElement {
     return (
-        <Layout level="2" style={styles.container}>
+        <Layout level="1" style={styles.container}>
           {
           this.renderBrowseGithubRepoIssues()
           }
@@ -251,46 +251,25 @@ const styles: StyleSheet.NamedStyles<any> = StyleSheet.create({
     marginTop: 64
   },
   browseGithubRepoIssues: {
-  width: '100%',
-  alignItems: 'center',
-  marginBottom: 44,
-  justifyContent: 'center'
+    width: '100%',
+    alignItems: 'center',
+    marginBottom: 44,
+    justifyContent: 'center'
   },
   screenDescriptionTitle: {
-  textAlign: 'center',
-  paddingHorizontal: 24,
-  marginBottom: 16
-  },
-  getIssuesButton: {
-  // alignSelf: 'center',
-  marginVertical: 16
-  },
-  loadingIndicatorContainer: {
-  flexDirection: 'column',
-  alignItems: 'center',
-  justifyContent: 'center',
-  width: '100%',
-  height: 50
-  },
-  searchResultsListContainer: {
-    flex: 1,
-    paddingHorizontal: 16
-  },
-  mealsSectionListHeader: {
-  flexDirection: 'row',
-  justifyContent: 'space-between',
-  paddingVertical: 8,
-  paddingHorizontal: 16
-  },
-  mealsListFooter: {
-  margin: 16,
-  textAlign: 'center'
-  },
-  mealItemContainer: {
+    textAlign: 'center',
+    paddingHorizontal: 24,
     marginBottom: 16
   },
-  mealsListInnerContainerStyle: {
-  paddingBottom: 100
+  getIssuesButton: {
+    marginVertical: 16
+  },
+  loadingIndicatorContainer: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+    height: 50
   }
 });
 // ------------------------------------------------------------------------------------------
