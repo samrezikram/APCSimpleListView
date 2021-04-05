@@ -98,6 +98,7 @@ function* githubRepositoryIssuesListSaga(sagaData: IGithubIssuesSagaTriggerObjec
     }
   } catch (error) {
     console.log(error);
+    yield put(_setGitHubLoadingError(error));
     yield put(_setIsLoadingGitHubIssuesItems(false));
     yield put(_setGitHubIssuesItems([]));
     emitNextAndComplete(sagaData._observable, false);
