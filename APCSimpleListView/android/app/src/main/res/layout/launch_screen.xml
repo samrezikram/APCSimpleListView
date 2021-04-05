@@ -11,4 +11,10 @@
         android:src="@mipmap/splash_icon"
         android:contentDescription="@string/app_name"
     />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/repostoryIssues"
+        android:gravity="center">
+    </TextView>
 </LinearLayout>
