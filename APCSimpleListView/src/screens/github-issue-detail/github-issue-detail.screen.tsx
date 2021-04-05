@@ -1,9 +1,9 @@
 import React from 'react';
 import { Dispatch, bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Linking, Platform, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { Layout, Text, withStyles, ThemeType, Button } from 'react-native-ui-kitten';
-import { bind as autobind, debounce, memoize } from 'lodash-decorators';
+import { bind as autobind, debounce } from 'lodash-decorators';
 import { NavigationBar } from '@components/navigation-bar/navigation-bar.component';
 
 import { IGlobalState } from '@models/app/global-state.model';
@@ -13,6 +13,8 @@ import { IAppScreen } from '@interfaces/app-screen.interface';
 import { IIssueJSON } from '@models/app/issue-json.model';
 import { IIssueGroup } from '@models/actions-results.model';
 import { Navigator } from '@navigation/navigator';
+
+import moment from 'moment';
 
  // Debounce Decorator Function Options
 const debOptions: object = {leading: true, trailing: false};
@@ -43,16 +45,16 @@ class GithubIssueDetailScreenComponent extends React.Component<IGithubIssueDetai
     return (
         <View style={{paddingVertical: 10, justifyContent: 'space-between', flexDirection: 'row' }}>
             <View style={{ flex: 1, alignItems: 'center' }}>
-              <Text style={{color: '#FF9819', fontSize: 15, fontWeight: '400'}}>Base Price</Text>
-              <Text style={{fontSize: 12, paddingVertical: 0}}>{`${this.props.issueDetail.title} AED`}</Text>
+              <Text style={{color: '#FF9819', fontSize: 15, fontWeight: '400'}}>Issue Created At</Text>
+              <Text style={{fontSize: 12, paddingVertical: 0}}>{`${moment.utc(this.props.issueDetail.created_at).local().format('YYYY-MM-DD')}`}</Text>
             </View>
             <View style={{ flex: 1, alignItems: 'center' }}>
-              <Text style={{color: '#FF9819', fontSize: 15, fontWeight: '400'}}>Delivery Charge</Text>
-              <Text style={{fontSize: 12, paddingVertical: 0}}>{`${this.props.issueDetail.title} AED`}</Text>
+              <Text style={{color: '#FF9819', fontSize: 15, fontWeight: '400'}}>Issue Update At</Text>
+              <Text style={{fontSize: 12, paddingVertical: 0}}>{`${moment.utc(this.props.issueDetail.updated_at).local().format('YYYY-MM-DD')}`}</Text>
             </View>
             <View style={{ flex: 1, alignItems: 'center'}} >
-              <Text style={{color: '#FF9819', fontSize: 15, fontWeight: '400'}}>Total + vat </Text>
-              <Text style={{fontSize: 12, paddingVertical: 0}}>{`${this.props.issueDetail.title} AED`}</Text>
+              <Text style={{color: '#FF9819', fontSize: 15, fontWeight: '400'}}>Issue Closed At </Text>
+              <Text style={{fontSize: 12, paddingVertical: 0}}>{`${moment.utc(this.props.issueDetail.closed_at).local().format('YYYY-MM-DD')}`}</Text>
             </View>
         </View>
     );
@@ -69,23 +71,21 @@ class GithubIssueDetailScreenComponent extends React.Component<IGithubIssueDetai
   }
   // ---------------------
 
- 
-
   public render(): React.ReactElement {
     return (
       <Layout level="1" style={styles.container}>
         {/* Navigation Bar */}
         <NavigationBar
-         title={this.props.issueDetail.title}
+         title={'Issue Detail'}
          renderBackButton={true}
          onBackButtonPress={this.goBack}/>
 
         <View>
-          <Text style={{color: '#FF9819', fontSize: 15, fontWeight: '800'}}>{`${this.props.issueDetail.title}`}</Text>
+          <Text style={{color: '#FF9819', fontSize: 15, fontWeight: '500'}}>{`${this.props.issueDetail.title}`}</Text>
         </View>
         {/* Separator Line */}
         <View style={styles.separator}/>
-        {/* Meal Price Data */}
+        {/* Issue Data */}
         {
           this.renderRow()
         }
@@ -139,7 +139,7 @@ function mapDispatchToProps(dispatch: Dispatch<any>): any {
 
 const GithubIssueDetailScreenConnected = connect(mapStateToProps, mapDispatchToProps)(GithubIssueDetailScreenComponent);
 
-export const MealDetailScreen = withStyles(GithubIssueDetailScreenConnected, (theme: ThemeType) => ({
+export const GitHubIssueDetailScreen = withStyles(GithubIssueDetailScreenConnected, (theme: ThemeType) => ({
   selectedTabHighlighter: {
     backgroundColor: theme['color-primary-500']
   },

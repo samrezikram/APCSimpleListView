@@ -13,7 +13,7 @@ import { AppInitScreen, IAppInitScreenProps } from '@screens/app-init/app-init.s
 import { RequestGithubScreen, IRequestGitHubRepoScreenProps } from '@screens/github-repo/request-github-repo.screen';
 
 import { MainScreen } from '@screens/main/main.screen';
-import { MealDetailScreen } from '@screens/github-issue-detail/github-issue-detail.screen';
+import { GitHubIssueDetailScreen } from '@screens/github-issue-detail/github-issue-detail.screen';
 export class NavigationInitializer {
 
   private static navigationInitializerCalled: boolean = false;
@@ -23,7 +23,7 @@ export class NavigationInitializer {
     NavigationInitializer.registerComponent(ScreenRoute.APP_INIT_SCREEN, gestureHandlerRootHOC(AppInitScreen));
     NavigationInitializer.registerComponent(ScreenRoute.REQUEST_GITHUB_REPO_SCREEN, gestureHandlerRootHOC(RequestGithubScreen));
     NavigationInitializer.registerComponent(ScreenRoute.MAIN_SCREEN, gestureHandlerRootHOC(MainScreen));
-    NavigationInitializer.registerComponent(ScreenRoute.ISSUE_DETAIL_SCREEN, gestureHandlerRootHOC(MealDetailScreen));
+    NavigationInitializer.registerComponent(ScreenRoute.ISSUE_DETAIL_SCREEN, gestureHandlerRootHOC(GitHubIssueDetailScreen));
 
     NavigationInitializer.registerAppLaunchedListener();
 

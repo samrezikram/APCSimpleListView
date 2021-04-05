@@ -14,7 +14,7 @@ import { Layout, Text, withStyles, ThemeType, Input, Button } from 'react-native
 import { bind as autobind, debounce, memoize } from 'lodash-decorators';
 import { EvaIconGenerator, EvaIconName } from '@components/eva-icon/eva-icon.component';
 
-import { loadIssueListAsync } from '@actions/app.actions';
+import { loadGitHubIssueItemsAsync } from '@actions/app.actions';
 import { IGlobalState } from '@models/app/global-state.model';
 import { IInputValidationResult } from '@models/app/validation-results.model';
 import { IIssueJSON } from '@models/app/issue-json.model';
@@ -33,14 +33,15 @@ import { IAppScreenProps } from '@interfaces/app-screen-props.interface';
 import { IAppScreen } from '@interfaces/app-screen.interface';
 
 
-import { IGithubIssueDetailScreenProps } from '@screens/github-issue-detail/github-issue-detail.screen';
+import { IMainScreenProps } from '@screens/main/main.screen';
 import { LoadingIndicator, LoadingIndicators } from '@components/loading-indicator/loading-indicator.component';
+import { ISagaThrownError } from '@models/app/errors.model';
 
 // Debounce Decorator Function Options
 const debOptions: object = {leading: true, trailing: false};
 
 interface IMapDispatchToProps {
-  loadIssueListAsync: typeof loadIssueListAsync;
+loadGitHubIssueItemsAsync: typeof loadGitHubIssueItemsAsync;
 }
 
 interface IMapStateToProps {
@@ -53,23 +54,22 @@ organization: string;
 repo: string;
 organizationValidationResult: IInputValidationResult;
 repoValidationResult: IInputValidationResult;
-isSendingFetchIssuesRequest: boolean;
-
 }
 
 
-export interface IRequestGitHubRepoScreenProps extends IAppScreenProps, IMapStateToProps, IMapDispatchToProps {}
+export interface IRequestGitHubRepoScreenProps extends IAppScreenProps, IMapStateToProps, IMapDispatchToProps {
+isLoadingGitHubIssuesItems: boolean;
+}
 
 
 
 class RequestGitHubRepoScreenComponent extends React.Component<IRequestGitHubRepoScreenProps, IRequestGitHubRepoScreenState> implements IAppScreen {
 
   public state: IRequestGitHubRepoScreenState = {
-  organization: this.props.currentOrganization || '',
-  repo: this.props.currentRepo || '',
-  organizationValidationResult: Validators.validateUsername(this.props.currentOrganization || ''),
-  repoValidationResult: Validators.validateUsername(this.props.currentOrganization || ''),
-  isSendingFetchIssuesRequest: false
+    organization: this.props.currentOrganization || '',
+    repo: this.props.currentRepo || '',
+    organizationValidationResult: Validators.validateUsername(this.props.currentOrganization || ''),
+    repoValidationResult: Validators.validateUsername(this.props.currentOrganization || ''),
   };
 
   organizationInputRef: any = React.createRef();
@@ -81,6 +81,7 @@ class RequestGitHubRepoScreenComponent extends React.Component<IRequestGitHubRep
   constructor(props: any) {
     super(props);
   }
+  // ---------------------
 
   componentDidMount(): void {}
   // ---------------------
@@ -125,13 +126,11 @@ class RequestGitHubRepoScreenComponent extends React.Component<IRequestGitHubRep
   @autobind
   @debounce(500, debOptions)
   private confirmDetails(): void {
-     this.setState({isSendingFetchIssuesRequest: true});
-
-     this.props.loadIssueListAsync(this.state.organization!, this.state.repo).promise.then(() => {
-       this.setState({isSendingFetchIssuesRequest: false});
-     }).catch(() => {
-       this.setState({isSendingFetchIssuesRequest: false});
-     });
+    this.props.loadGitHubIssueItemsAsync(true, this.state.organization, this.state.repo).promise.then((response: any) => {
+      console.log(response);
+      Navigator.pushScreen(this.props.componentId, ScreenRoute.MAIN_SCREEN, {} as IMainScreenProps);
+    }).catch((error: ISagaThrownError) => {
+    });
   }
   // ---------------------
 
@@ -146,6 +145,7 @@ class RequestGitHubRepoScreenComponent extends React.Component<IRequestGitHubRep
       </View>
     );
   }
+  // ---------------------
 
   @autobind
   private renderUserOrOrganizationField(): React.ReactElement {
@@ -164,7 +164,7 @@ class RequestGitHubRepoScreenComponent extends React.Component<IRequestGitHubRep
           autoCorrect={false}
           label={'Your github username or organization'}
           placeholder="USERNAME"
-          disabled={this.state.isSendingFetchIssuesRequest}
+          disabled={this.props.isLoadingGitHubIssuesItems}
           status={this.state.organizationValidationResult.validity === InputValidity.VALID ? 'success' :
                   this.state.organizationValidationResult.validity === InputValidity.INVALID ? 'danger' :
                   undefined}
@@ -191,7 +191,7 @@ class RequestGitHubRepoScreenComponent extends React.Component<IRequestGitHubRep
           autoCorrect={false}
           label={'Your Repository address'}
           placeholder="Repository"
-          disabled={this.state.isSendingFetchIssuesRequest}
+          disabled={this.props.isLoadingGitHubIssuesItems}
           status={this.state.repoValidationResult.validity === InputValidity.VALID ? 'success' :
                   this.state.repoValidationResult.validity === InputValidity.INVALID ? 'danger' :
                   undefined}
@@ -204,20 +204,19 @@ class RequestGitHubRepoScreenComponent extends React.Component<IRequestGitHubRep
 
   @autobind
   private renderGetIssuesButton(): React.ReactElement {
-  return(
-    <Button
-      style={styles.getIssuesButton}
-      status="primary"
-      disabled={(this.state.organizationValidationResult.validity != InputValidity.VALID) || (this.state.repoValidationResult.validity != InputValidity.VALID) || (Validators.isGitURL('git://github.com/' + this.state.organization + '/' + this.state.repo + '.git').validity != InputValidity.VALID) || this.state.isSendingFetchIssuesRequest}
-      onPress={this.confirmDetails}
-      {...testPropsOf(this.testIdPrefix, 'get_repository_issues')}>
-      {'View Issue'}
-    </Button>
-  );
-}
+    return(
+      <Button
+        style={styles.getIssuesButton}
+        status="primary"
+        disabled={(this.state.organizationValidationResult.validity != InputValidity.VALID) || (this.state.repoValidationResult.validity != InputValidity.VALID) || (Validators.isGitURL('git://github.com/' + this.state.organization + '/' + this.state.repo + '.git').validity != InputValidity.VALID) || this.props.isLoadingGitHubIssuesItems}
+        onPress={this.confirmDetails}
+        {...testPropsOf(this.testIdPrefix, 'get_repository_issues')}>
+        {'View Issue'}
+      </Button>
+    );
+  }
+  // ---------------------
 
-
-// ---------------------
   @autobind
   private renderMealsListSectionHeader(info: { section: SectionListData<IIssueJSON> }): React.ReactElement {
       return (
@@ -228,32 +227,32 @@ class RequestGitHubRepoScreenComponent extends React.Component<IRequestGitHubRep
         </Layout>
       );
   }
-  // ---------------------
+// ---------------------
 
   public render(): React.ReactElement {
     return (
-      <Layout level="2" style={styles.container}>
-        {
-        this.renderBrowseGithubRepoIssues()
-        }
-        {
-          this.renderUserOrOrganizationField()
-        }
-        {
-          this.renderRepositoryField()
-        }
-        {
-          this.renderGetIssuesButton()
-        }
-        {/* Loading Indicator */}
-        <View style={styles.loadingIndicatorContainer}>
-        {
-          this.state.isSendingFetchIssuesRequest ? (
-            <LoadingIndicator indicator={LoadingIndicators.COLORFUL_PROGRESS_BAR} width={150} autoPlay={true} loop={true}/>
-          ) :  <React.Fragment />
-        }
-      </View>
-    </Layout>
+        <Layout level="2" style={styles.container}>
+          {
+          this.renderBrowseGithubRepoIssues()
+          }
+          {
+            this.renderUserOrOrganizationField()
+          }
+          {
+            this.renderRepositoryField()
+          }
+          {
+            this.renderGetIssuesButton()
+          }
+          {/* Loading Indicator */}
+          <View style={styles.loadingIndicatorContainer}>
+          {
+            this.props.isLoadingGitHubIssuesItems ? (
+              <LoadingIndicator indicator={LoadingIndicators.COLORFUL_PROGRESS_BAR} width={150} autoPlay={true} loop={true}/>
+            ) :  <React.Fragment />
+          }
+        </View>
+      </Layout>
     );
   }
 }
@@ -270,23 +269,23 @@ const styles: StyleSheet.NamedStyles<any> = StyleSheet.create({
   alignItems: 'center',
   marginBottom: 44,
   justifyContent: 'center'
-},
-screenDescriptionTitle: {
+  },
+  screenDescriptionTitle: {
   textAlign: 'center',
   paddingHorizontal: 24,
   marginBottom: 16
-},
-getIssuesButton: {
+  },
+  getIssuesButton: {
   // alignSelf: 'center',
   marginVertical: 16
-},
-loadingIndicatorContainer: {
+  },
+  loadingIndicatorContainer: {
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
   width: '100%',
   height: 50
-},
+  },
   searchResultsListContainer: {
     flex: 1,
     paddingHorizontal: 16
@@ -296,12 +295,12 @@ loadingIndicatorContainer: {
   justifyContent: 'space-between',
   paddingVertical: 8,
   paddingHorizontal: 16
-},
-mealsListFooter: {
+  },
+  mealsListFooter: {
   margin: 16,
   textAlign: 'center'
-},
-mealItemContainer: {
+  },
+  mealItemContainer: {
     marginBottom: 16
   },
   mealsListInnerContainerStyle: {
@@ -314,9 +313,9 @@ mealItemContainer: {
 // Connecting To Redux ----------------------------------------------------------------------
 function mapStateToProps(state: IGlobalState): any {
   return {
-    issuesList: state.app.issuesList,
-    isLoadingMealList: state.app.isLoadingIssuesList,
-    mealsGroup: state.app.issuesGroup,
+    gitHubIssuesItems: state.app.gitHubIssuesItems,
+    isLoadingGitHubIssuesItems: state.app.isLoadingGitHubIssuesItems,
+    gitHubIssuesGroups: state.app.gitHubIssuesGroups,
   };
 }
 // -----------
@@ -324,7 +323,7 @@ function mapStateToProps(state: IGlobalState): any {
 function mapDispatchToProps(dispatch: Dispatch<any>): any {
   return {
     ...bindActionCreators({
-      loadIssueListAsync
+      loadGitHubIssueItemsAsync
     }, dispatch),
   };
 }

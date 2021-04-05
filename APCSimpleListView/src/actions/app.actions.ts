@@ -4,11 +4,12 @@ import {
   IAppActionResult,
   IIssueGroup,
   IGithubIssuesSagaTriggerObject,
-  ISagaTtriggerObject,
+  ISagaTriggerObject,
 } from '@models/actions-results.model';
 
 import { AppActionsTypes } from '@enums/actions-types.enum';
 import { IIssueJSON } from '@models/app/issue-json.model';
+import { IGitHubIssuesRequest } from '@models/http/issue.model';
 
 
 //  @description This should only be called by a saga, not directly from a component
@@ -31,52 +32,74 @@ export function _setDoneInitilizingApp(done: boolean): IAppActionResult {
 }
 // ----------------------
 
-export function _setIssuesList(issuesList: IIssueJSON[] | []): IAppActionResult {
+export function _setIsLoadingGitHubIssuesItems(isLoadingGitHubItems: boolean): IAppActionResult {
   const result: IAppActionResult = {
-    type: AppActionsTypes.SET_ISSUES_LIST,
+    type: AppActionsTypes.SET_IS_LOADING_GITHUB_ISSUE_ITEMS,
     payload: {
-      issuesList: issuesList
-    }
-  };
-  return result;
-}
-
-/**
- *
- * @description This should only be called by a saga, not directly from a component
- */
-export function _setIssuesGroups(issuesGroup: IIssueGroup[]): IAppActionResult {
-  const result: IAppActionResult = {
-  type: AppActionsTypes.SET_ISSUES_GROUPS,
-    payload: {
-      issuesGroup: issuesGroup
+      isLoadingGitHubIssuesItems: isLoadingGitHubItems
     }
   };
   return result;
 }
 // ----------------------
-export function _setIsLoadingIssuesList(isLoadingIssues: boolean): IAppActionResult {
+
+export function _setTotalGitHubIssuesCount(count: number): IAppActionResult {
   const result: IAppActionResult = {
-    type: AppActionsTypes.SET_IS_LOADING_ISSUE_LIST,
+    type: AppActionsTypes.SET_TOTAL_GITHUB_ISSUES_COUNT,
     payload: {
-      isLoadingIssuesList: isLoadingIssues
+      totalCount: count,
     }
   };
   return result;
 }
+// ----------------------
+
+export function _setGitHubIssuesItems(gitHubIssuesItems: IIssueJSON[]): IAppActionResult {
+  const result: IAppActionResult = {
+    type: AppActionsTypes.SET_GITHUB_ISSUES_ITEMS,
+    payload: {
+      gitHubIssuesItems: gitHubIssuesItems
+    }
+  };
+  return result;
+}
+// ----------------------
+
+export function _setGitHubIssuesGroups(gitHubIssuesGroups: IIssueGroup[]): IAppActionResult {
+  const result: IAppActionResult = {
+  type: AppActionsTypes.SET_GITHUB_ISSUES_GROUPS,
+    payload: {
+      gitHubIssuesGroups: gitHubIssuesGroups
+    }
+  };
+  return result;
+}
+// ----------------------
+
+export function _setGitHubLoadingError(error: string): IAppActionResult {
+  const result: IAppActionResult = {
+    type: AppActionsTypes.SET_GITHUB_ISSUES_LOADING_ERROR,
+    payload: {
+      gitHubIssuesLoadingError: error
+    }
+  };
+  return result;
+}
+// ----------------------
 
 /* ------------------------------------------------------------------ */
 /* ------------------    Saga Triggers    --------------------------- */
 /* ------------------------------------------------------------------ */
-export function loadIssueListAsync(organization: string, repo: string, showErrorAlerts?: boolean, onErrorAlertDismissal?: () => void): IGithubIssuesSagaTriggerObject {
+export function loadGitHubIssueItemsAsync(clearPreviousGitHubIssuesItems?: boolean, organization?: string, repo?: string,  showErrorAlerts?: boolean, onErrorAlertDismissal?: () => void): IGithubIssuesSagaTriggerObject {
   const _observable: Subject<boolean> = new Subject<boolean>();
   const result: IGithubIssuesSagaTriggerObject = {
     type: AppActionsTypes.LOAD_GITHUB_REPOSITORY_ISSUES_LIST_SAGA,
     _observable: _observable,
     promise: _observable.toPromise(),
     payload: {
+      clearPreviousGitHubIssuesItems: clearPreviousGitHubIssuesItems,
       organization: organization,
-      repo: repo,
+      repo: repo
     },
     showErrorAlerts: showErrorAlerts,
     onErrorAlertDismissal: onErrorAlertDismissal
@@ -92,15 +115,25 @@ export function loadIssueListAsync(organization: string, repo: string, showError
 /* ------------------------------------------------------------------ */
 /**
  *
- *
  * @description This should only be called by a saga, not directly from a component
  */
+ 
+export function setGitHubIssuesFilter(githubIssuesFilter: IGitHubIssuesRequest): IAppActionResult {
+  const result: IAppActionResult = {
+    type: AppActionsTypes.SET_GITHUB_ISSUES_FILTER,
+    payload: {
+      gitHubIssuesFilter: githubIssuesFilter
+    }
+  };
+  return result;
+}
+// ----------------------
 
 
 /* ------------------------------------------------------------------ */
 /* ------------------    Saga Triggers    --------------------------- */
 /* ------------------------------------------------------------------ */
-export function initAppStateAsync(): ISagaTtriggerObject {
+export function initAppStateAsync(): ISagaTriggerObject {
   return {
     type: AppActionsTypes.INIT_APP_STATE_SAGA
   };

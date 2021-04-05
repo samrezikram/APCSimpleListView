@@ -3,7 +3,7 @@ import { ThemeName, ThemeKind } from '@enums/theme-name.enum';
 
 import {
   IThemeActionResult,
-  ISagaTtriggerObject,
+  ISagaTriggerObject,
 } from '@models/actions-results.model';
 
 /* ------------------------------------------------------------------ */
@@ -59,7 +59,7 @@ export function _setIsAutoTheme(isAuto: boolean): IThemeActionResult {
 /* ------------------------------------------------------------------ */
 /* ------------------    Saga Triggers    --------------------------- */
 /* ------------------------------------------------------------------ */
-export function initThemeStateAsync(): ISagaTtriggerObject {
+export function initThemeStateAsync(): ISagaTriggerObject {
   return {
     type: ThemesActionsTypes.INIT_THEME_STATE_SAGA
   };
@@ -67,8 +67,8 @@ export function initThemeStateAsync(): ISagaTtriggerObject {
 // ----------------------
 
 
-export function setAutoThemeAsync(): ISagaTtriggerObject {
-  const result: ISagaTtriggerObject = {
+export function setAutoThemeAsync(): ISagaTriggerObject {
+  const result: ISagaTriggerObject = {
     type: ThemesActionsTypes.SET_AUTO_THEME_SAGA
   };
   return result;

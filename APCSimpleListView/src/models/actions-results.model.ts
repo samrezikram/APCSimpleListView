@@ -12,7 +12,6 @@ export interface IGlobalActionResult {
   type: GlobalActionsTypes;
 }
 
-
 // -------------------------------------------------------------------------------------------------------------
 
 // App ---------------------------------------------------------------------------------------------------------
@@ -24,12 +23,13 @@ export interface IAppActionResult {
 
 // Sagas -----------------
 // ----------
-export interface IGithubIssuesSagaTriggerObject extends ISagaTtriggerObject {
+export interface IGithubIssuesSagaTriggerObject extends ISagaTriggerObject {
   _observable: Subject<boolean>;
   promise: Promise<boolean>;
   payload: {
-    organization: string,
-    repo: string,
+    clearPreviousGitHubIssuesItems?: boolean;
+    organization?: string;
+    repo?: string;
   }
 }
 
@@ -37,6 +37,7 @@ export interface IIssueGroup {
   date: string;
   data: IIssueJSON[];
 }
+
 // -------------------------------------------------------------------------------------------------------------
 
 // Themes ------------------------------------------------------------------------------------------------------
@@ -47,7 +48,7 @@ export interface IThemeActionResult {
 }
 
 // Saga Trigger ------------------------------------------------------------------------------------------------
-export interface ISagaTtriggerObject {
+export interface ISagaTriggerObject {
   type: GlobalActionsTypes | AppActionsTypes | ThemesActionsTypes;
   showErrorAlerts?: boolean;
   onErrorAlertDismissal?: () => void;

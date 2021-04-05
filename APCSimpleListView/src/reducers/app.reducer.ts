@@ -13,27 +13,40 @@ export function appReducer(state: IAppState = initialState.app, action: IAppActi
         doneInitializing: action.payload.doneInitializing
       } as IAppState;
     // ----------------------------------------------------------
-    case AppActionsTypes.SET_ISSUES_LIST:
+    case AppActionsTypes.SET_GITHUB_ISSUES_ITEMS:
       return {
         ...state,
-        issuesList: action.payload.issuesList
+        gitHubIssuesItems: action.payload.gitHubIssuesItems
       } as IAppState;
 
     // ----------------------------------------------------------
-    case AppActionsTypes.SET_IS_LOADING_ISSUE_LIST:
+    case AppActionsTypes.SET_IS_LOADING_GITHUB_ISSUE_ITEMS:
       return {
         ...state,
-        isLoadingIssuesList: action.payload.isLoadingIssuesList
+        isLoadingGitHubIssuesItems: action.payload.isLoadingGitHubIssuesItems
       } as IAppState;
     // ----------------------------------------------------------
 
-    case AppActionsTypes.SET_ISSUES_GROUPS:
+    case AppActionsTypes.SET_GITHUB_ISSUES_GROUPS:
       return {
         ...state,
-        issuesGroup: action.payload.issuesGroup
+        gitHubIssuesGroups: action.payload.gitHubIssuesGroups
       } as IAppState;
     // ----------------------------------------------------------
 
+    case AppActionsTypes.SET_GITHUB_ISSUES_FILTER:
+      return {
+        ...state,
+        gitHubIssuesFilter: action.payload.gitHubIssuesFilter
+      } as IAppState;
+    // ----------------------------------------------------------
+
+    case AppActionsTypes.SET_TOTAL_GITHUB_ISSUES_COUNT:
+      return {
+        ...state,
+        totalCount: action.payload.totalCount
+      } as IAppState;
+    // ----------------------------------------------------------
     default:
       return state;
   }
