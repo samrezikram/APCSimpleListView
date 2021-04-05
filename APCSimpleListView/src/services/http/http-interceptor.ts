@@ -81,6 +81,7 @@ class HttpClientInterceptor {
       if (!error || (error && error.isAxiosError)) {
         const errorObject: IHttpError = {} as IHttpError;
         errorObject.message = `${error.response ? error.response : '--Github Issues Inferred-- Possible Failure to Connect To Server'} @ ${error.config.url}`;
+        errorObject.status = error.response?.status;
         return this.handleHttpError(ErrorSource.JAVASCRIPT, errorObject);
       } else {
         if (error.code && parseInt(error.code, 10) > 200) {

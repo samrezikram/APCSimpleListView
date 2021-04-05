@@ -47,6 +47,15 @@ export function appReducer(state: IAppState = initialState.app, action: IAppActi
         totalCount: action.payload.totalCount
       } as IAppState;
     // ----------------------------------------------------------
+
+    case AppActionsTypes.SET_GITHUB_ISSUES_LOADING_ERROR:
+      return {
+        ...state,
+        gitHubIssuesLoadingError: action.payload.gitHubIssuesLoadingError
+      } as IAppState;
+    // ----------------------------------------------------------
+
+    
     default:
       return state;
   }
