@@ -39,6 +39,6 @@ export interface ISagaThrownError {
   errorTranslationMatched: boolean;
   navigationActionHaveBeenTaken: boolean;
   alertActionHaveBeenTaken: boolean;
-  fetchWeatherGlobalError: String;
+  fetchGitHubGlobalError: String;
 }
 // -----------------------------------------------------------------

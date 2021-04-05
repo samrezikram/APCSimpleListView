@@ -28,7 +28,7 @@ class SagaErrorHandlerClass {
       errorTranslationMatched: false,
       navigationActionHaveBeenTaken: false,
       alertActionHaveBeenTaken: false,
-      fetchWeatherGlobalError: 'error'
+      fetchGitHubGlobalError: 'error'
     };
   }
   // -----------------------------------------------------------------------

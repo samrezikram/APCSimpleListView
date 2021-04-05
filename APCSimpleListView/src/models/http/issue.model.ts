@@ -1,8 +1,10 @@
 import { IIssueJSON } from './../app/issue-json.model';
 
 export interface IGitHubIssuesRequest {
-  organization: string,
-  repo: string
+  org: string,
+  repo: string,
+  page: number,
+  per_page: number
 }
 // --------------
 
@@ -33,11 +35,13 @@ export interface IBaseRequestModel {
 // -----------------------------------------------------------------
 
 export interface ISuccessResponse {
-  list: IIssueJSON[];
   success: boolean;
   statusText: string;
   status: number | string; // 200 For Success
 }
 // -----------------------------------------------------------------
 
-export interface IGithubRepoIssuesResponse extends ISuccessResponse {}
+export interface IGithubRepoIssuesResponse extends ISuccessResponse {
+  items: [IIssueJSON];
+  total_count: number;
+}

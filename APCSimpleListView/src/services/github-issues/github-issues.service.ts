@@ -18,11 +18,14 @@ class GitHubIssuesService {
   // -----------------------------------------------------------------------
 
   // Public Methods --------------------------------------------------------
-  public async getRepositoryIssues(githubIssuesRequest: IGitHubIssuesRequest): Promise<IGithubRepoIssuesResponse> {
-    const requestQeryParams: object = {
-    };
-    const additionalHeaders: {[headerName: string]: string} = {};
-    return HttpService.get(githubIssuesRequest.organization + '/' + githubIssuesRequest.repo + '/issues' , requestQeryParams);
+  public async getRepositoryIssues(request: IGitHubIssuesRequest): Promise<IGithubRepoIssuesResponse> {
+    const params: URLSearchParams = new URLSearchParams();
+    params.append('is:issue', '');
+    params.append('per_page', `${request.per_page}`);
+    params.append('page', `${request.page}`);
+    params.append('q', `repo:${request.org + '/' + request.repo}`);
+
+    return HttpService.get('/search/issues', params);
   }
   // --------------------
 }

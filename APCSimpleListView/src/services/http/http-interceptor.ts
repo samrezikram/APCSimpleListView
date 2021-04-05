@@ -17,7 +17,7 @@ class HttpClientInterceptor {
   private baseUrl: string = '';
 
   private constructor() {
-    this.baseUrl = 'https://api.github.com/repos/';
+    this.baseUrl = 'https://api.github.com';
   }
 
   // Singleton Handling ----------------------------------------------------

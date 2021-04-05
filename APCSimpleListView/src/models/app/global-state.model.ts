@@ -1,6 +1,7 @@
 import { ThemeName, ThemeKind } from '@enums/theme-name.enum';
 import { IIssueGroup } from '@models/actions-results.model';
 import { IIssueJSON } from './issue-json.model';
+import { IGitHubIssuesRequest } from '@models/http/issue.model';
 
 export interface IGlobalState {
     app: IAppState;
@@ -9,9 +10,13 @@ export interface IGlobalState {
 
 export interface IAppState {
     doneInitializing?: boolean;
-    issuesList?: IIssueJSON[];
-    isLoadingIssuesList?: boolean;
-    issuesGroup?: IIssueGroup[];
+    totalCount?: number;
+    clearPreviousGitHubIssuesItems?: boolean
+    gitHubIssuesItems?: IIssueJSON[];
+    isLoadingGitHubIssuesItems?: boolean;
+    gitHubIssuesGroups?: IIssueGroup[];
+    gitHubIssuesLoadingError?: string;
+    gitHubIssuesFilter?: IGitHubIssuesRequest;
 }
 export interface IThemeState {
     doneInitializing?: boolean;

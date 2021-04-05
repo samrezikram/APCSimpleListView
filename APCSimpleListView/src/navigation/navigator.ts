@@ -218,14 +218,14 @@ export class Navigator {
 
 
   private static async reportNavigationError(stackTraceCapturer: Error, message: string): Promise<any> {
-    const fetchWeatherGlobalError: IFetchIssueGlobalError = {} as IFetchIssueGlobalError;
-    fetchWeatherGlobalError.source = ErrorSource.NAVIGATION_MODULE;
-    fetchWeatherGlobalError.stackTraceCapturer = stackTraceCapturer;
-    fetchWeatherGlobalError.errorDetails = {
+    const fetchGitHubGlobalError: IFetchIssueGlobalError = {} as IFetchIssueGlobalError;
+    fetchGitHubGlobalError.source = ErrorSource.NAVIGATION_MODULE;
+    fetchGitHubGlobalError.stackTraceCapturer = stackTraceCapturer;
+    fetchGitHubGlobalError.errorDetails = {
       code: '0',
       message: message
     } as IGenericError;
-    return Promise.reject(fetchWeatherGlobalError);
+    return Promise.reject(fetchGitHubGlobalError);
   }
   // ----------------------
 
