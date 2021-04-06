@@ -90,9 +90,9 @@ jobs:
       key: $(nodeCacheKey)
       path: 'APCSimpleListView/node_modules'
 
-  # Building Android APK For Dev
+  # Building Android APK For Release
   - task: Gradle@2
-    displayName: 'Build DEV'
+    displayName: 'Build Release'
     inputs:
       workingDirectory: 'APCSimpleListView/android'
       gradleWrapperFile: 'APCSimpleListView/android/gradlew'
@@ -128,3 +128,37 @@ jobs:
     inputs:
       pathToPublish: '$(Build.artifactStagingDirectory)'
       artifactName: Android
+
+# Job 5: Building For iOS Dev
+- job: 'iOS_Dev'
+  timeoutInMinutes: 120
+  displayName: Build iOS DEV
+  dependsOn: Install_Dependencies
+  condition: succeeded('Install_Dependencies')
+  pool:
+    vmImage: 'macOS-10.15'
+  steps:
+
+    # Restore Node Modules
+  - task: Cache@2
+    displayName: Restore Node Modules
+    inputs:
+      key: $(nodeCacheKey)
+      path: 'APCSimpleListView/node_modules'
+
+  # Restore Cocoa Pods
+  - task: Cache@2
+    displayName: Restore Cocoa Pods
+    inputs:
+      key: $(podsCacheKey)
+      path: 'APCSimpleListView/ios/Pods'
+
+  # Install Development Certificate
+  # Install Development Provisioning Profile
+  # Build Dev
+  # Rename Artifacts
+  # Copying IPAs to Artifacts Directory
+  # Copying js Sourcemaps to Artifacts Directory
+  # Publishing IPAs To Artifacts Folder
+
+
