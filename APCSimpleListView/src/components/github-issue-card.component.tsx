@@ -53,7 +53,7 @@ class GitHubIssueCardComponent extends React.PureComponent<IMealCardProps, IGitH
 
             {/* Assignee */}
             <View>
-              <Text category="s1" style={{fontSize: 10}}>{`~ ${this.props.issue.labels[0]?.description ? this.props.issue.assignee.login : 'Anonymous'}`}</Text>
+              <Text category="s1" style={{fontSize: 10}}>{`~ ${this.props.issue.user.login ? this.props.issue.user.login : 'Anonymous'}`}</Text>
             </View>
 
             {/* Separator Line */}
